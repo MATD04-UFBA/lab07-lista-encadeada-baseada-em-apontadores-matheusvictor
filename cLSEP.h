@@ -27,4 +27,7 @@ public:
     bool buscarElem(float k);
 
     void imprimirLSEA();
+
+    bool removerElementosPares();
+    
 };

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <cmath>
 
 #include "cLSEP.h"
 #include "cNoLSEP.h"
@@ -62,6 +63,34 @@ cNoLSEP* noCor 	= NULO;
 	numElems++;									// Atualiza o numero de elementos armazenados na lista
 
 	return true;
+}
+
+// ***********************************************
+// ***                                         ***
+// ***********************************************
+bool cLSEP::removerElementosPares() {
+
+	cNoLSEP* noAnterior;
+	cNoLSEP* noCor = NULO;
+
+	int totalElementos = this->numElems;
+
+	if (this->numElems > 0) {
+		noCor = inicio;
+		for (int i = 0; i < totalElementos; i++) {			
+			if ((int) trunc(noCor->getDado()) % 2 == 0) {
+				std::cout << "removi o elemento " << noCor->getDado() << std::endl;
+				noAnterior->setProx(noCor->getProx());	
+				delete noCor;
+				numElems--;				
+			} else {
+				noAnterior = noCor;
+			}
+			noCor = noCor->getProx();			
+		}
+		return true;
+	}
+	return false;
 }
 
 // ***********************************************
