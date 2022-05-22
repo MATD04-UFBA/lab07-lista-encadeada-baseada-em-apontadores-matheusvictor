@@ -68,29 +68,14 @@ cNoLSEP* noCor 	= NULO;
 // ***********************************************
 // ***                                         ***
 // ***********************************************
-bool cLSEP::removerElementosPares() {
+bool cLSEP::inserirElementoInicio(float k) {
 
-	cNoLSEP* noAnterior;
-	cNoLSEP* noCor = NULO;
+cNoLSEP* novoNo = NULO;
+cNoLSEP* noCor 	= NULO;
 
-	int totalElementos = this->numElems;
+//TODO
 
-	if (this->numElems > 0) {
-		noCor = inicio;
-		for (int i = 0; i < totalElementos; i++) {			
-			if ((int) trunc(noCor->getDado()) % 2 == 0) {
-				std::cout << "removi o elemento " << noCor->getDado() << std::endl;
-				noAnterior->setProx(noCor->getProx());	
-				delete noCor;
-				numElems--;				
-			} else {
-				noAnterior = noCor;
-			}
-			noCor = noCor->getProx();			
-		}
-		return true;
-	}
-	return false;
+	return true;
 }
 
 // ***********************************************
@@ -122,6 +107,44 @@ cNoLSEP* noAnt;
 // ***********************************************
 // ***                                         ***
 // ***********************************************
+bool cLSEP::removerElementosPares() {
+	
+	cNoLSEP* noAnterior = NULO;
+	cNoLSEP* noAtual = inicio;
+	cNoLSEP* noAuxiliar = NULO;
+
+	int totalElementos = this->numElems;
+
+	for (int i = 0; i < totalElementos; i++) {						
+
+		if ((int) trunc(noAtual->getDado()) % 2 == 0) { // verifica se o dado armazenado em noAtual é par
+			
+			if (noAnterior == NULO) {
+				inicio = noAtual->getProx();
+				noAuxiliar = inicio;
+			} else {
+				noAnterior->setProx(noAtual->getProx());
+				noAuxiliar = noAnterior->getProx();
+			}
+			
+			delete noAtual;
+			noAtual = noAuxiliar;
+			this->numElems--; // decrementa o número de elementos que compõe a lista
+			
+		} else {
+			std::cout << noAtual->getDado() << " eh impar" << std::endl;
+			noAnterior = noAtual;
+			noAtual = noAtual->getProx();
+
+			std::cout << "noAtual = " << noAtual->getDado() << std::endl;
+		}		
+	}
+		return true;
+}
+
+// ***********************************************
+// ***                                         ***
+// ***********************************************
 bool cLSEP::buscarElem(float k, cNoLSEP* &pos) {
 		
 	pos = NULO;
@@ -142,7 +165,6 @@ bool cLSEP::buscarElem(float k, cNoLSEP* &pos) {
 
 	return true;
 }
-
 
 // ***********************************************
 // ***                                         ***

@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define MAX 30
+#define MAX 7
 
 #include "cLSEP.h"
 
@@ -19,9 +19,10 @@ int nL = MAX;
 
     if (argc > 1) {
         nL = atoi(argv[1]);
-        if (nL < 1) 
+        if (nL < 1) {
             nL = MAX; 
         }
+    }
 
     cLSEP L;
 
@@ -31,21 +32,18 @@ int nL = MAX;
     L.imprimirLSEA();
     
     int i = 0;
-    while ( ( i < nL ) && ( L.inserirElem(i * 10) ) )
+    while ( ( i < nL ) && ( L.inserirElem(i) ) )
         i++;
 
     std::cout << "########### LISTA APOS INSERCOES" << std::endl;
     L.imprimirLSEA();
 
-    i = 0;
-    while ( i < nL ) {
-        L.removerElem(i * 20);
-        i++;
-        }
+    L.removerElementosPares();
 
     std::cout << "########### LISTA APOS REMOCOES" << std::endl;
     L.imprimirLSEA();
 
+    /*
     i = 0;
     while ( i < nL ) {
         if ( L.buscarElem(i * 10) )
@@ -54,4 +52,6 @@ int nL = MAX;
             std::cout << "Não achei a chave k = " << i*10 << std::endl;
         i++;
         }
+    */   
+    
 }

@@ -20,14 +20,16 @@ public:
 
     bool inserirElem(float k);
 
-    bool removerElem(float k);
+    bool inserirElementoInicio(float k);
 
-    bool buscarElem(float k, cNoLSEP* &pos);
+    bool removerElem(float k);
+    
+    bool removerElementosPares();
 
     bool buscarElem(float k);
+    
+    bool buscarElem(float k, cNoLSEP* &pos);    
 
     void imprimirLSEA();
-
-    bool removerElementosPares();
     
 };
