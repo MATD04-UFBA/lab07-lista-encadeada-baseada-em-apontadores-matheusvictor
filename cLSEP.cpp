@@ -174,17 +174,8 @@ bool cLSEP::removerPosicoesImpares() {
 			noAuxiliar = noAnterior->getProx();
 		}
 
-		std::cout << i << " eh posicao impar" << std::endl;
-		std::cout << noAnterior << " eh no anterior" << std::endl;
-		std::cout << noAtual << " eh no atual" << std::endl;
-		std::cout << noAuxiliar << " eh o auxliar" << std::endl;	
-		std::cout << noAtual << " foi removido" << std::endl;
-
 		delete noAtual;
 		noAtual = noAuxiliar;
-
-		std::cout << noAtual << " eh o novo atual" << std::endl;
-		std::cout << noAnterior << " eh o novo anterior" << std::endl;
 
 		this->numElems--;
 
