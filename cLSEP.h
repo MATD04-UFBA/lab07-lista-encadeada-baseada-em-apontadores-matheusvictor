@@ -26,6 +26,8 @@ public:
     
     bool removerElementosPares();
 
+    bool removerPosicoesImpares();
+
     bool buscarElem(float k);
     
     bool buscarElem(float k, cNoLSEP* &pos);    

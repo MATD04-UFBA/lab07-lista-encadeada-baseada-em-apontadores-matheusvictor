@@ -38,13 +38,11 @@ int nL = MAX;
     std::cout << "########### LISTA APOS INSERCOES" << std::endl;
     L.imprimirLSEA();
 
-    L.removerElementosPares();
+    L.removerPosicoesImpares();
 
-    std::cout << "########### LISTA APOS REMOCOES" << std::endl;
     L.imprimirLSEA();
 
-    L.inserirElementoInicio(2);
-    L.imprimirLSEA();
+
     /*
     i = 0;
     while ( i < nL ) {
