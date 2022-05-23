@@ -8,8 +8,7 @@
 // ***********************************************
 // ***                                         ***
 // ***********************************************
-cLSEP::cLSEP() {	
-		
+cLSEP::cLSEP() {			
 	inicio 		= NULO;
     numElems 	= 0;
 }
@@ -28,7 +27,7 @@ cNoLSEP* noCor;
 		delete noCor;
 		noCor = inicio;
 		numElems--;
-		}			
+	}			
 }
 
 // ***********************************************
@@ -70,10 +69,20 @@ cNoLSEP* noCor 	= NULO;
 // ***********************************************
 bool cLSEP::inserirElementoInicio(float k) {
 
-cNoLSEP* novoNo = NULO;
-cNoLSEP* noCor 	= NULO;
+	cNoLSEP* noAtual = NULO;
+	cNoLSEP* novoNo = NULO;
 
-//TODO
+	novoNo = new cNoLSEP;						// Cria uma alocação de um nó na memoria heap    
+
+	if (novoNo == NULO) { 						// alocação sem sucesso
+		return false;
+	}
+
+	novoNo->setDado(k);							// Coloca o novo dado no nó
+	novoNo->setProx(inicio);					// O novoNo irá apontar para o atual inicio (que passará a ser o segundo na linha abaixo)
+	inicio = novoNo;							// O início da lista será o novo elemento inserido
+
+	this->numElems++;
 
 	return true;
 }
@@ -220,8 +229,6 @@ cNoLSEP* noCor = NULO;
 // ***                                         ***
 // ***********************************************
 void cLSEP::imprimirLSEA() {
-
-	std::cout << "------------ LISTA ------------" << std::endl;
 
 	if (inicio == NULO) {
 		std::cout << "*********** LISTA VAZIA ***********" << std::endl;
