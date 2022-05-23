@@ -38,7 +38,7 @@ int nL = MAX;
     std::cout << "########### LISTA APOS INSERCOES" << std::endl;
     L.imprimirLSEA();
 
-    L.removerPosicoesImpares();
+    L.removerElementosPorIntervalo(3,6);
 
     L.imprimirLSEA();
 

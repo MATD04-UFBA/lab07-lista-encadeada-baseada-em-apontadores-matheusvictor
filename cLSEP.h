@@ -28,6 +28,8 @@ public:
 
     bool removerPosicoesImpares();
 
+    bool removerElementosPorIntervalo(float i, float f);
+
     bool buscarElem(float k);
     
     bool buscarElem(float k, cNoLSEP* &pos);    

@@ -148,7 +148,7 @@ bool cLSEP::removerElementosPares() {
 			std::cout << "noAtual = " << noAtual->getDado() << std::endl;
 		}		
 	}
-		return true;
+	return true;
 }
 
 // ***********************************************
@@ -184,6 +184,42 @@ bool cLSEP::removerPosicoesImpares() {
 			noAtual = noAtual->getProx();
 		}	
 	}
+	return true;
+}
+
+// ***********************************************
+bool cLSEP::removerElementosPorIntervalo(float inicioIntervalo, float fIntervalo) {
+	
+	cNoLSEP* noAnterior = NULO;
+	cNoLSEP* noAtual = inicio;
+	cNoLSEP* noAuxiliar = NULO;
+
+	int totalElementos = this->numElems;
+
+	for (int i = 0; i < totalElementos; i++) {						
+
+		if (noAtual->getDado() >= inicioIntervalo && noAtual->getDado() <= fIntervalo) { // verifica se o dado armazenado em noAtual é par
+			
+			std::cout << noAtual->getDado() << "esta entre " << inicioIntervalo << " e " << fIntervalo << std::endl;
+
+			if (noAnterior == NULO) {
+				inicio = noAtual->getProx();
+				noAuxiliar = inicio;
+			} else {
+				noAnterior->setProx(noAtual->getProx());
+				noAuxiliar = noAnterior->getProx();
+			}
+			
+			delete noAtual;
+			noAtual = noAuxiliar;
+			this->numElems--; // decrementa o número de elementos que compõe a lista
+			
+		} else {
+			noAnterior = noAtual;
+			noAtual = noAtual->getProx();
+		}		
+	}
+
 	return true;
 }
 
