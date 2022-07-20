@@ -89,6 +89,73 @@ bool cLSEP::inserirElementoInicio(float k) {
 
 // ***********************************************
 // ***                                         ***
+// ***
+bool cLSEP::inserirElementoEmOrdem(float k) {
+
+	cNoLSEP* novoNo = NULO;
+	cNoLSEP* noCor 	= NULO;
+	cNoLSEP* noAnterior	= NULO;
+
+	novoNo = new cNoLSEP;						// Cria uma alocação de um nó na memoria heap    
+
+	if (novoNo == NULO) {
+		return false;
+	}		
+
+	novoNo->setDado(k);							// Coloca o novo dado no nó
+	novoNo->setProx(NULO);						// Sinaliza que ele será o ultimo, apontando para NULO
+
+	if(inicio == NULO) 							// Verifica se a lista esta vazia
+		inicio = novoNo;						// e nesse caso é necessário atualizar o inicio da lista
+
+	else {										// A lista tem pelo menos um elemento
+
+		noCor = inicio;							
+		noAnterior = nullptr;
+
+		
+
+		/*
+		if (noCor->getDado() >= novoNo->getDado()) { 
+			novoNo->setProx(noCor);
+		} else {
+
+			if (noCor->getProx() != NULO) {		// Busca o ultimo elemento, cujo campo prox do nó aponta para NULO			
+				noCor = noCor->getProx();			// Avança na lista pelo encadeamento, ou seja, o campo prox do nó
+				std::cout << "noCor = " << noCor->getDado() << " [" << noCor->getProx() << "]" << std::endl;
+			}	
+
+			noCor->setProx(novoNo);	
+		}
+		/*
+
+		// std::cout << "novoNo->getDado() = " << novoNo->getDado() << std::endl;
+		// std::cout << "noCor->getDado() = " << noCor->getDado() << std::endl;
+
+		/*
+		float maiorElemento;
+		float menorElemento;
+		if (noCor->getDado() > novoNo->getDado()) {
+			std::cout << novoNo->getDado() << " eh menor " << std::endl;
+			noCor->setProx(novoNo);	
+		} else {
+			std::cout << novoNo->getDado() << " eh maior " << std::endl;
+
+			noAuxiliar = noCor;
+			novoNo = noCor;
+			noCor = novoNo;	
+		}
+		*/
+
+	}	
+		
+	this->numElems++;							// Atualiza o numero de elementos armazenados na lista
+	return true;
+
+}
+
+// ***********************************************
+// ***                                         ***
 // ***********************************************
 bool cLSEP::removerElem(float k) {
 
@@ -200,8 +267,6 @@ bool cLSEP::removerElementosPorIntervalo(float inicioIntervalo, float fIntervalo
 
 		if (noAtual->getDado() >= inicioIntervalo && noAtual->getDado() <= fIntervalo) { // verifica se o dado armazenado em noAtual é par
 			
-			std::cout << noAtual->getDado() << "esta entre " << inicioIntervalo << " e " << fIntervalo << std::endl;
-
 			if (noAnterior == NULO) {
 				inicio = noAtual->getProx();
 				noAuxiliar = inicio;

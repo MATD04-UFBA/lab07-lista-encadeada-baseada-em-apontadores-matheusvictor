@@ -22,6 +22,8 @@ public:
 
     bool inserirElementoInicio(float k);
 
+    bool inserirElementoEmOrdem(float k);
+
     bool removerElem(float k);
     
     bool removerElementosPares();

@@ -31,15 +31,13 @@ int nL = MAX;
     std::cout << "########### LISTA INICIAL" << std::endl;
     L.imprimirLSEA();
     
-    int i = 0;
-    while ( ( i < nL ) && ( L.inserirElem(i) ) )
-        i++;
+    L.inserirElementoEmOrdem(10);    
+    L.inserirElementoEmOrdem(2);
+    L.inserirElementoEmOrdem(3);
+    L.inserirElementoEmOrdem(9);
+    L.inserirElementoEmOrdem(1);
 
     std::cout << "########### LISTA APOS INSERCOES" << std::endl;
-    L.imprimirLSEA();
-
-    L.removerElementosPorIntervalo(3,6);
-
     L.imprimirLSEA();
 
 
